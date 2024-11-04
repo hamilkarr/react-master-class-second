@@ -1,9 +1,9 @@
 import { Link, useLocation, useMatch, Outlet } from "react-router-dom";
 import { Container, Header, Title } from "../components/Components";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useQuery, useQueries } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { Helmet } from "react-helmet-async";
 
 const Overview = styled.div`
   display: flex;
@@ -157,11 +157,17 @@ const Coin = () => {
       {
         queryKey: ["tickers", coinId],
         queryFn: () => fetchCoinTickers(coinId) as Promise<ITickersData>,
+        // refetchInterval: 5000,
       },
     ],
   });
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
@@ -181,8 +187,8 @@ const Coin = () => {
               <span>${info?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{info?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>${tickers?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{info?.description}</Description>
@@ -204,7 +210,7 @@ const Coin = () => {
               <Link to={`/${coinId}/chart`}>Chart</Link>
             </Tab>
           </Tabs>
-          <Outlet />
+          <Outlet context={{ coinId }} />
         </>
       )}
     </Container>

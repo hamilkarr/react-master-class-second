@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Header, Title } from "../components/Components";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoins } from "../api";
+import { Helmet } from "react-helmet-async";
 
 const CoinsList = styled.ul``;
 const Coin = styled.li`
@@ -47,6 +47,9 @@ const Coins = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Coins</title>
+      </Helmet>
       <Header>
         <Title>Coins</Title>
       </Header>
