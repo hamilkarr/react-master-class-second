@@ -1,4 +1,4 @@
-import { Link, useLocation, useMatch, Outlet } from "react-router-dom";
+import { Link, useLocation, useMatch, Outlet, useNavigate } from "react-router-dom";
 import { Container, Header, Title } from "../components/Components";
 import styled from "styled-components";
 import { useQueries } from "@tanstack/react-query";
@@ -48,6 +48,20 @@ const Tab = styled.div<{ $isActive: boolean }>`
     text-decoration: none;
     color: inherit;
   }
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+const BackButton = styled.button`
+  display: block;
+  margin-left: auto;
+  margin-top: 12px;
+  border: none;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
   &:hover {
     color: ${(props) => props.theme.accentColor};
   }
@@ -145,6 +159,7 @@ const Coin = () => {
   const coinId = pathname.split("/")[1];
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
+  const navigate = useNavigate();
   const [
     { data: info, isLoading: infoLoading },
     { data: tickers, isLoading: tickersLoading },
@@ -168,6 +183,7 @@ const Coin = () => {
           {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
         </title>
       </Helmet>
+      <BackButton onClick={() => navigate("/")}>← Back</BackButton>
       <Header>
         <Title>
           {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
