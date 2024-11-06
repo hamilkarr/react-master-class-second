@@ -4,11 +4,13 @@ import { Container, Header, Title } from "../components/Components";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet-async";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const CoinsList = styled.ul``;
 const Coin = styled.li`
   background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  color: black;
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -29,6 +31,24 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+const ToggleButton = styled.button`
+  display: block;
+  margin-left: auto;
+  margin-top: 12px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: ${props => props.theme.textColor};
+  color: ${props => props.theme.bgColor};
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
 interface ICoin {
   id: string;
   name: string;
@@ -44,12 +64,17 @@ const Coins = () => {
     queryKey: ["allCoins"],
     queryFn: fetchCoins
   });
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
     <Container>
       <Helmet>
         <title>Coins</title>
       </Helmet>
+      <ToggleButton onClick={() => setDarkAtom((prev) => !prev)}>
+        {isDark ? "Light" : "Dark"} Mode
+      </ToggleButton>
       <Header>
         <Title>Coins</Title>
       </Header>
