@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Crypto Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+실시간 암호화폐 정보를 추적하고 시각화하는 웹 애플리케이션입니다.
 
-## Available Scripts
+## 사용된 기술
 
-In the project directory, you can run:
+### 핵심 라이브러리
+- React 18
+- TypeScript
+- React Router v6
+- Styled Components
+- React Query (TanStack Query)
+- Recoil
+- ApexCharts
 
-### `npm start`
+### 주요 기능
+- 실시간 코인 시세 조회
+- 다크/라이트 모드 테마 전환
+- 코인별 상세 정보 제공
+- 캔들스틱 차트를 통한 가격 변동 시각화
+- 반응형 디자인
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### API
+- CoinPaprika API를 활용한 실시간 암호화폐 데이터 조회
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 상태 관리
+- React Query: 서버 상태 관리
+- Recoil: 클라이언트 상태 관리 (다크모드 등)
 
-### `npm test`
+### 스타일링
+- Styled Components를 활용한 컴포넌트 기반 스타일링
+- 다크/라이트 모드 테마 구현
+- CSS Grid 및 Flexbox를 활용한 레이아웃
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 타입 시스템
+- TypeScript를 활용한 정적 타입 체크
+- 인터페이스를 통한 데이터 구조 정의
 
-### `npm run build`
+### 배포
+- GitHub Pages를 통한 정적 웹사이트 배포
+- gh-pages를 활용한 배포 자동화
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
