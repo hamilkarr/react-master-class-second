@@ -85,7 +85,7 @@ const Coins = () => {
           {data?.map((coin) => (
             <Coin key={coin.id}>
               <Link
-                to={`/${coin.id}`}
+                to={`${coin.id}`}
                 state={{ name: coin.name }}
               >
                 <Img

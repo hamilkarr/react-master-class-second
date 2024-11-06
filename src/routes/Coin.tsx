@@ -156,9 +156,9 @@ interface ITickersData {
 
 const Coin = () => {
   const { state, pathname } = useLocation();
-  const coinId = pathname.split("/")[1];
-  const priceMatch = useMatch("/:coinId/price");
-  const chartMatch = useMatch("/:coinId/chart");
+  const coinId = pathname.split("/")[2];
+  const priceMatch = useMatch(`:coinId/price`);
+  const chartMatch = useMatch(`:coinId/chart`);
   const navigate = useNavigate();
   const [
     { data: info, isLoading: infoLoading },
@@ -220,10 +220,10 @@ const Coin = () => {
           </Overview>
           <Tabs>
             <Tab $isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>Price</Link>
+              <Link to={`${coinId}/price`}>Price</Link>
             </Tab>
             <Tab $isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
+              <Link to={`${coinId}/chart`}>Chart</Link>
             </Tab>
           </Tabs>
           <Outlet context={{ coinId }} />
