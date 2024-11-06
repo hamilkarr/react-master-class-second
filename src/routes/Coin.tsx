@@ -183,7 +183,7 @@ const Coin = () => {
           {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
         </title>
       </Helmet>
-      <BackButton onClick={() => navigate("../")}>← Back</BackButton>
+      <BackButton onClick={() => navigate("/react-master-class-second")}>← Back</BackButton>
       <Header>
         <Title>
           {state?.name ? state.name : infoLoading ? "Loading..." : info?.name}
