@@ -76,7 +76,7 @@ const Coins = () => {
         {isDark ? "Light" : "Dark"} Mode
       </ToggleButton>
       <Header>
-        <Title>Coins</Title>
+        <Title>Coins ({data?.length})</Title>
       </Header>
       {isLoading ? (
         "loading..."
