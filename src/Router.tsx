@@ -7,7 +7,7 @@ import Chart from './routes/Chart';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/react-master-class-second',
     element: <Root />,
     children: [
       {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         element: <Coins />,
       },
       {
-        path: '/:coinId',
+        path: ':coinId',
         element: <Coin />,
         children: [
           {
